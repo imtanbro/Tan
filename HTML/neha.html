@@ -1,0 +1,81 @@
+<html>
+   <head>
+
+      <title>
+        Nothing
+      </title>
+  
+    </head>
+
+    <style>
+    
+body
+{
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: Ink Free;
+}
+
+h1
+{
+   position: relative;
+   margin: 0;
+   padding: 0 20px;
+   font-size: 4em;
+}
+
+h1:before
+{
+  content:attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 0;
+  white-space: nowrap;
+  margin: 0 20px;
+  color: #91ff91;
+  overflow: hidden;
+  transition: 0.75s;
+}
+h1:hover:before
+{
+  width: 100%;
+ 
+}
+
+h1:after{
+   content: '';
+   position: absolute;
+   top: 0;
+   left: 0;
+   height: 100%;
+   width: 100%;
+   background: #fdff89;
+   transition: 0.75s;
+   transition-delay: 0.75s;
+   transform: scaleX(0);
+   transform-origin: right;
+   z-index: -1;
+}
+h1:hover:after{
+   transform: scaleX(1);
+}
+
+  
+    </style>
+
+
+<body>
+   <h1 data-text="Neha's Creation">Neha's Creation</h1>
+</body>
+ 
+
+
+
+</html>
