@@ -1,0 +1,241 @@
+#include<iostream>
+#include<list>
+
+using namespace std;
+
+void display(list<int> &l)
+{
+	list<int>::iterator p;
+	cout<<endl;
+	cout<<"Elements in queue :";
+	for(p=l.begin();p!=l.end();++p)
+		cout<<*p<<" ";
+		cout<<"\n\n";
+}
+
+int main()
+{
+	list<int> l1;
+	char ch;
+	int k,s;
+	list<int>::iterator p;
+	cout<<"\n\nEnter the size of queue =";
+	cin>>s;
+	do
+	{
+		cout<<"Menu\n1.Push\n2.Pop\n3.Display"<<endl;
+		cin>>k;
+		switch(k)
+		{
+			case 1:
+				if(l1.size()!=s)
+				{
+					cout<<" Enter Element =";
+					cin>>k;
+					l1.push_back(k);
+					cout<<"Element pushed"<<endl;
+				}
+				else
+				{
+					cout<<"Overflow"<<endl;
+				}
+				break;
+			case 2:
+				if(l1.size()!=0)
+				{
+					k=l1.front();
+					cout<<k<<" is poped"<<endl;
+					l1.pop_front();
+				}
+				else
+				{
+					cout<<"Underflow"<<endl;
+				}
+				break;
+			case 3:
+				if(l1.size()==0)
+					cout<<" Empty queue";
+				else
+					display(l1);
+				break;
+			default:
+				cout<<"Invalid choice"<<endl;
+		}
+		cout<<"Enter y to continue =";
+		cin>>ch;
+	}while(ch=='y'||ch=='Y');
+	return 0;
+}
+
+Output:
+
+Enter the size of queue =5
+Menu
+1.Push
+2.Pop
+3.Display
+1
+ Enter Element =66
+Element pushed
+Enter y to continue =y
+Menu
+1.Push
+2.Pop
+3.Display
+3
+
+Elements in queue :66 
+
+Enter y to continue =y
+Menu
+1.Push
+2.Pop
+3.Display
+1
+ Enter Element =45
+Element pushed
+Enter y to continue =y
+Menu
+1.Push
+2.Pop
+3.Display
+3
+
+Elements in queue :66 45 
+
+Enter y to continue =y
+Menu
+1.Push
+2.Pop
+3.Display
+1
+ Enter Element =1
+Element pushed
+Enter y to continue =y
+Menu
+1.Push
+2.Pop
+3.Display
+3
+
+Elements in queue :66 45 1 
+
+Enter y to continue =y
+Menu
+1.Push
+2.Pop
+3.Display
+1 
+ Enter Element =88
+Element pushed
+Enter y to continue =y
+Menu
+1.Push
+2.Pop
+3.Display
+3
+
+Elements in queue :66 45 1 88 
+
+Enter y to continue =y
+Menu
+1.Push
+2.Pop
+3.Display
+1
+ Enter Element =99
+Element pushed
+Enter y to continue =y
+Menu
+1.Push
+2.Pop
+3.Display
+3
+
+Elements in queue :66 45 1 88 99 
+
+Enter y to continue =y
+Menu
+1.Push
+2.Pop
+3.Display
+1
+Overflow
+Enter y to continue =y
+Menu
+1.Push
+2.Pop
+3.Display
+2
+66 is poped
+Enter y to continue =y
+Menu
+1.Push
+2.Pop
+3.Display
+3
+
+Elements in queue :45 1 88 99 
+
+Enter y to continue =y
+Menu
+1.Push
+2.Pop
+3.Display
+2
+45 is poped
+Enter y to continue =y
+Menu
+1.Push
+2.Pop
+3.Display
+3
+
+Elements in queue :1 88 99 
+
+Enter y to continue =y
+Menu
+1.Push
+2.Pop
+3.Display
+2
+1 is poped
+Enter y to continue =y
+Menu
+1.Push
+2.Pop
+3.Display
+3
+
+Elements in queue :88 99 
+
+Enter y to continue =y
+Menu
+1.Push
+2.Pop
+3.Display
+2
+88 is poped
+Enter y to continue =y
+Menu
+1.Push
+2.Pop
+3.Display
+3
+
+Elements in queue :99 
+
+Enter y to continue =y
+Menu
+1.Push
+2.Pop
+3.Display
+2
+99 is poped
+Enter y to continue =y
+Menu
+1.Push
+2.Pop
+3.Display
+3
+ Empty queue

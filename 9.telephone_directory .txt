@@ -1,0 +1,347 @@
+#include <iostream>
+#include<string.h>
+#include<fstream>
+using namespace std;
+class directory
+{
+    char name[30];
+    long long mob;
+    public:
+    directory()
+    {
+        strcpy(name,"NA");
+        mob=0;
+    }
+    void accept()
+    {
+        cout<<"Enter name : ";
+        cin>>name;
+        cout<<"Enter telephone no. : ";
+        cin>>mob;
+    }
+    void display()
+    {
+        cout<<"Name : "<<name<<"\n";
+        cout<<"Telephone : "<<mob<<"\n";
+    }
+    long long get_mob()
+    {
+    return mob;
+    }
+};
+int main()
+{
+    directory d1;
+    int n,i,c,flag=0;
+    char ch;
+    fstream f;
+    long long num2,num,num3;
+    do{
+    cout<<"TELEPHONE DIRECTORY\n";
+    cout<<"\n1.Create\n2.Display\n3.Add\n4.search\n5.Update\n6.Delete\n";
+    cout<<"Enter choice : ";
+    cin>>c;
+    switch(c)
+    {
+		case 1:
+			f.open("Student.txt",ios::out);
+		        cout<<"\n Enter no. of students : ";
+			cin>>n;
+			for(i=0;i<n;i++)
+			{
+				d1.accept();
+				f.write((char*)&d1,sizeof(directory));
+			}
+			f.close();
+			break;
+		case 2:
+			f.open("Student.txt",ios::in);
+		        f.seekg(0,ios::beg);
+		        while(1)
+		        {
+		       	       f.read((char*)&d1,sizeof(d1));
+		       	       if(f.eof()!=0)
+		       	           	break;
+				    	d1.display();
+		        }
+		        f.close();
+		        break;
+		 case 3:
+
+		        f.open("Student.txt",ios::app|ios::out);
+		        cout<<"Enter new rocord details : \n";
+		        f.seekp(0,ios::end);
+                	d1.accept();
+		        f.write((char*)&d1,sizeof(directory));
+		        n++;
+		        cout<<"\n Record Added successfully\n";
+		        f.close();
+		        break;
+		  case 4:
+
+	  		f.open("Student.txt",ios::in);
+	  		cout<<"Enter telephone number to be searched : ";
+	  		cin>>num;
+	  		f.seekg(0,ios::beg);
+		        for(i=0;i<n;i++)		//while(f)
+		        {
+		            f.read((char*)&d1,sizeof(directory));
+		            if(d1.get_mob()==num)
+		            {
+		            flag=1;
+		            d1.display();
+		            break;
+		            }
+		            else
+		            {
+		            flag=0;
+		            }
+		        }
+		        if(flag==0)
+		        cout<<"\nNot found";
+		        f.close();
+		        break;
+		case 5:
+		        f.open("Student.txt",ios::in|ios::out);
+		        cout<<"Enter record details to be modified(telephone no.) : ";
+		        cin>>num2;
+		        f.seekg(0,ios::beg);
+		        for(i=0;i<n;i++)
+		        {
+		            f.read((char*)&d1,sizeof(d1));
+		            if(d1.get_mob()==num2)
+		            {
+		                f.seekp(sizeof(d1)*i,ios::beg);
+		                d1.accept();
+		                f.write((char*)&d1,sizeof(d1));
+		                flag=1;
+		                cout<<"\n Record Modified successfully\n";
+		                break;
+		            }
+		        }
+		        if(flag==0)
+			cout<<"record not found!!!";
+		        f.close();
+		        break;
+		case 6:
+		        cout<<"Enter record details to be deleted(telephone no.) : ";
+		        cin>>num3;
+		        f.open("Student.txt",ios::in);
+		        fstream f1;
+		        f1.open("Temp.txt",ios::out);
+		        flag=0;
+		        while(1)
+		        {
+		            f.read((char*)&d1,sizeof(d1));
+		            if(f.eof()!=0)
+		            	break;
+		            if(d1.get_mob()!=num3)
+		            	flag=1;
+		            if(d1.get_mob()!=num3)
+		            {
+		                f1.write((char*)&d1,sizeof(d1));
+
+		            }
+
+		        }
+		        f.close();
+		        f1.close();
+		        if(flag==1)
+		        {
+		        	cout<<"\n Record deleted successfully\n";
+		        	remove("Student.txt");
+		        	rename("Temp.txt","Student.txt");
+		        }
+		        break;
+
+    }
+    cout<<"\nDo you want to continue?(y/n) : ";
+    cin>>ch;
+    }while(ch=='y'||ch=='Y');
+    return 0;
+}
+/*
+Output:
+
+TELEPHONE DIRECTORY
+
+1.Create
+2.Display
+3.Add
+4.search
+5.Update
+6.Delete
+Enter choice : 1
+
+ Enter no. of students : 3
+Enter name : Rupesh
+Enter telephone no. : 987456
+Enter name : Nilam
+Enter telephone no. : 456321
+Enter name : Divya
+Enter telephone no. : 147852
+
+Do you want to continue?(y/n) : y
+TELEPHONE DIRECTORY
+
+1.Create
+2.Display
+3.Add
+4.search
+5.Update
+6.Delete
+Enter choice : 2
+	Telephone Directory
+
+Name : Rupesh
+Telephone : 987456
+Name : Nilam
+Telephone : 456321
+Name : Divya
+Telephone : 147852
+
+Do you want to continue?(y/n) : y
+TELEPHONE DIRECTORY
+
+1.Create
+2.Display
+3.Add
+4.search
+5.Update
+6.Delete
+Enter choice : 3
+Enter new rocord details : 
+Enter name : Pavan
+Enter telephone no. : 888777
+
+ Record Added successfully
+
+Do you want to continue?(y/n) : y
+TELEPHONE DIRECTORY
+
+1.Create
+2.Display
+3.Add
+4.search
+5.Update
+6.Delete
+Enter choice : 3
+Enter new rocord details : 
+Enter name : Varun
+Enter telephone no. : 221133
+
+ Record Added successfully
+
+Do you want to continue?(y/n) : y
+TELEPHONE DIRECTORY
+
+1.Create
+2.Display
+3.Add
+4.search
+5.Update
+6.Delete
+Enter choice : 2
+	Telephone Directory
+
+Name : Rupesh
+Telephone : 987456
+Name : Nilam
+Telephone : 456321
+Name : Divya
+Telephone : 147852
+Name : Pavan
+Telephone : 888777
+Name : Varun
+Telephone : 221133
+
+Do you want to continue?(y/n) : y
+TELEPHONE DIRECTORY
+
+1.Create
+2.Display
+3.Add
+4.search
+5.Update
+6.Delete
+Enter choice : 4
+Enter telephone number to be searched : 147852
+Name : Divya
+Telephone : 147852
+
+Do you want to continue?(y/n) : y
+TELEPHONE DIRECTORY
+
+1.Create
+2.Display
+3.Add
+4.search
+5.Update
+6.Delete
+Enter choice : 5
+Enter record details to be modified(telephone no.) : 888777
+Enter name : Nirali        
+Enter telephone no. : 654456
+
+ Record Modified successfully
+
+Do you want to continue?(y/n) : y
+TELEPHONE DIRECTORY
+
+1.Create
+2.Display
+3.Add
+4.search
+5.Update
+6.Delete
+Enter choice : 2
+	Telephone Directory
+
+Name : Rupesh
+Telephone : 987456
+Name : Nilam
+Telephone : 456321
+Name : Divya
+Telephone : 147852
+Name : Nirali
+Telephone : 654456
+Name : Varun
+Telephone : 221133
+
+Do you want to continue?(y/n) : y
+TELEPHONE DIRECTORY
+
+1.Create
+2.Display
+3.Add
+4.search
+5.Update
+6.Delete
+Enter choice : 6
+Enter record details to be deleted(telephone no.) : 654456
+
+ Record deleted successfully
+
+Do you want to continue?(y/n) : y
+TELEPHONE DIRECTORY
+
+1.Create
+2.Display
+3.Add
+4.search
+5.Update
+6.Delete
+Enter choice : 2
+	Telephone Directory
+
+Name : Rupesh
+Telephone : 987456
+Name : Nilam
+Telephone : 456321
+Name : Divya
+Telephone : 147852
+Name : Varun
+Telephone : 221133
+
+*/
+

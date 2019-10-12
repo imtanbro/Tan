@@ -1,0 +1,241 @@
+#include<iostream>
+#include<list>
+using namespace std;
+void display(list<int> &l1)
+{
+    list<int>::iterator p;
+    for(p=l1.begin();p!=l1.end();p++)
+    {
+        cout<<*p<<" ";
+    }
+}
+int main()
+{
+    list<int> l1;
+    char ch;
+    int k;
+    do{
+        cout<<"-----------------STACK OPERATIONS------------------\n\n\n";
+        cout<<"MENU(Remember...Stack size is 5!!!)\n";
+        cout<<"1.Push\t2.Pop\t3.Display Stack\n";
+        cout<<"Enter choice : ";
+        cin>>k;
+        switch(k)
+        {
+            case 1:
+                    if(l1.size()!=5)
+                    {
+                        cout<<"Enter element to be pushed : ";
+                        cin>>k;
+                        l1.push_back(k);
+                        cout<<"Element pushed successfully!!!\n";
+                    }
+                    else
+                    cout<<"Stack Overflow\n";
+                    break;
+            case 2:
+                    if(l1.size()!=0)
+                    {
+                        k=l1.back();
+                        cout<<"Popped element is "<<k<<"\n";
+                        l1.pop_back();
+                    }
+                    else
+                    cout<<"Stack Underflow\n";
+                    break;
+            case 3:
+                    if(l1.size()==0)
+                    cout<<"Stack is empty\n";
+                    else
+                    display(l1);
+                    break;
+            default:
+                    cout<<"\nInvalid choice!!\n";
+        }
+        cout<<"\nDo you want to try other stack operations? (y/n) : ";
+        cin>>ch;
+    }while(ch=='y'||ch=='Y');
+    return 0;
+}
+
+Output:
+
+-----------------STACK OPERATIONS------------------
+
+
+MENU(Remember...Stack size is 5!!!)
+1.Push	2.Pop	3.Display Stack
+Enter choice : 1
+Enter element to be pushed : 6
+Element pushed successfully!!!
+
+Do you want to try other stack operations? (y/n) : y
+-----------------STACK OPERATIONS------------------
+
+
+MENU(Remember...Stack size is 5!!!)
+1.Push	2.Pop	3.Display Stack
+Enter choice : 3
+6 
+Do you want to try other stack operations? (y/n) : y
+-----------------STACK OPERATIONS------------------
+
+
+MENU(Remember...Stack size is 5!!!)
+1.Push	2.Pop	3.Display Stack
+Enter choice : 1
+Enter element to be pushed : 45
+Element pushed successfully!!!
+
+Do you want to try other stack operations? (y/n) : y
+-----------------STACK OPERATIONS------------------
+
+
+MENU(Remember...Stack size is 5!!!)
+1.Push	2.Pop	3.Display Stack
+Enter choice : 3
+6 45 
+Do you want to try other stack operations? (y/n) : y
+-----------------STACK OPERATIONS------------------
+
+
+MENU(Remember...Stack size is 5!!!)
+1.Push	2.Pop	3.Display Stack
+Enter choice : 1
+Enter element to be pushed : 44
+Element pushed successfully!!!
+
+Do you want to try other stack operations? (y/n) : y
+-----------------STACK OPERATIONS------------------
+
+
+MENU(Remember...Stack size is 5!!!)
+1.Push	2.Pop	3.Display Stack
+Enter choice : 3
+6 45 44 
+Do you want to try other stack operations? (y/n) : y
+-----------------STACK OPERATIONS------------------
+
+
+MENU(Remember...Stack size is 5!!!)
+1.Push	2.Pop	3.Display Stack
+Enter choice : 1
+Enter element to be pushed : 85
+Element pushed successfully!!!
+
+Do you want to try other stack operations? (y/n) : y
+-----------------STACK OPERATIONS------------------
+
+
+MENU(Remember...Stack size is 5!!!)
+1.Push	2.Pop	3.Display Stack
+Enter choice : 3
+6 45 44 85 
+Do you want to try other stack operations? (y/n) : 
+y
+-----------------STACK OPERATIONS------------------
+
+
+MENU(Remember...Stack size is 5!!!)
+1.Push	2.Pop	3.Display Stack
+Enter choice : 1
+Enter element to be pushed : 99
+Element pushed successfully!!!
+
+Do you want to try other stack operations? (y/n) : y
+-----------------STACK OPERATIONS------------------
+
+
+MENU(Remember...Stack size is 5!!!)
+1.Push	2.Pop	3.Display Stack
+Enter choice : 3
+6 45 44 85 99 
+Do you want to try other stack operations? (y/n) : y
+-----------------STACK OPERATIONS------------------
+
+
+MENU(Remember...Stack size is 5!!!)
+1.Push	2.Pop	3.Display Stack
+Enter choice : 1
+Stack Overflow
+
+Do you want to try other stack operations? (y/n) : y
+-----------------STACK OPERATIONS------------------
+
+
+MENU(Remember...Stack size is 5!!!)
+1.Push	2.Pop	3.Display Stack
+Enter choice : 2
+Popped element is 99
+
+Do you want to try other stack operations? (y/n) : y
+-----------------STACK OPERATIONS------------------
+
+
+MENU(Remember...Stack size is 5!!!)
+1.Push	2.Pop	3.Display Stack
+Enter choice : 2
+Popped element is 85
+
+Do you want to try other stack operations? (y/n) : y
+-----------------STACK OPERATIONS------------------
+
+
+MENU(Remember...Stack size is 5!!!)
+1.Push	2.Pop	3.Display Stack
+Enter choice : 2
+Popped element is 44
+
+Do you want to try other stack operations? (y/n) : y
+-----------------STACK OPERATIONS------------------
+
+
+MENU(Remember...Stack size is 5!!!)
+1.Push	2.Pop	3.Display Stack
+Enter choice : 3
+6 45 
+Do you want to try other stack operations? (y/n) : y
+-----------------STACK OPERATIONS------------------
+
+
+MENU(Remember...Stack size is 5!!!)
+1.Push	2.Pop	3.Display Stack
+Enter choice : 2
+Popped element is 45
+
+Do you want to try other stack operations? (y/n) : y
+-----------------STACK OPERATIONS------------------
+
+
+MENU(Remember...Stack size is 5!!!)
+1.Push	2.Pop	3.Display Stack
+Enter choice : 3
+6 
+Do you want to try other stack operations? (y/n) : y
+-----------------STACK OPERATIONS------------------
+
+
+MENU(Remember...Stack size is 5!!!)
+1.Push	2.Pop	3.Display Stack
+Enter choice : 2
+Popped element is 6
+
+Do you want to try other stack operations? (y/n) : y
+-----------------STACK OPERATIONS------------------
+
+
+MENU(Remember...Stack size is 5!!!)
+1.Push	2.Pop	3.Display Stack
+Enter choice : 3
+Stack is empty
+
+Do you want to try other stack operations? (y/n) : y
+-----------------STACK OPERATIONS------------------
+
+
+MENU(Remember...Stack size is 5!!!)
+1.Push	2.Pop	3.Display Stack
+Enter choice : 2
+Stack Underflow
+
+

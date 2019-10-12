@@ -1,0 +1,172 @@
+#include <iostream>
+using namespace std;
+
+class ex
+{
+	int age;
+	float salary;
+	char c;
+	string city;
+
+public:
+	void accept()
+	{
+		cout<<"\tEnter information\n"<<endl;
+		cout<<"Enter age:"<<endl;
+		cin>>age;
+		cout<<"Enter salary:"<<endl;
+		cin>>salary;
+		cout<<"Enter city:"<<endl;
+		cin>>city;
+		cout<<"Do you own a 4 wheeler? (y/n)"<<endl;
+		cin>>c;
+	}
+	void show()
+	{
+		cout<<"\tApplicants info"<<endl;
+		cout<<"\nAge = "<<age<<endl;
+		cout<<"Salary = "<<salary<<endl;
+		cout<<"city = "<<city<<endl;
+		cout<<"4 Wheeler = "<<c<<endl;
+	}
+
+	void check()
+	{
+		try
+		{
+			if (age<18 || age>55)
+				throw(age);
+			if(salary<50000||salary>100000)
+				throw(salary);
+			if(city!="pune"&&city!="bangalore"&&city!="mumbai"&&city!="chennai")
+				throw(city);
+			if(c=='n'||c=='N')
+				throw(c);
+			cout<<"\nYou are high end youngster"<<endl;
+		}
+		catch(int a)
+		{
+			cout<<"\nYou are not high end youngster age exp"<<endl;
+		}
+		catch(float s)
+		{
+			cout<<"\nYou are not high end youngster sal exp"<<endl;
+		}
+		catch(char v)
+		{
+			cout<<"\nYou are not high end youngster car exp"<<endl;
+		}
+		catch(string s)
+		{
+			cout<<"\nYou are not high end youngster city exp"<<endl;
+		}
+	}
+};
+
+int main()
+{
+	ex e;
+	e.accept();
+	e.show();
+	e.check();
+	return 0;
+}
+
+
+Output:
+
+	Enter information
+
+Enter age:
+19
+Enter salary:
+55000
+Enter city:
+pune
+Do you own a 4 wheeler? (y/n)
+n
+	Applicants info
+
+Age = 19
+Salary = 55000
+city = pune
+4 Wheeler = n
+
+You are not high end youngster car exp
+
+	Enter information
+
+Enter age:
+19
+Enter salary:
+56000
+Enter city:
+haridwar
+Do you own a 4 wheeler? (y/n)
+y
+	Applicants info
+
+Age = 19
+Salary = 56000
+city = haridwar
+4 Wheeler = y
+
+You are not high end youngster city exp
+
+	Enter information
+
+Enter age:
+19
+Enter salary:
+5000
+Enter city:
+mumbai
+Do you own a 4 wheeler? (y/n)
+y
+	Applicants info
+
+Age = 19
+Salary = 5000
+city = mumbai
+4 Wheeler = y
+
+You are not high end youngster sal exp
+
+	Enter information
+
+Enter age:
+8
+Enter salary:
+50000
+Enter city:
+chennai
+Do you own a 4 wheeler? (y/n)
+y
+	Applicants info
+
+Age = 8
+Salary = 50000
+city = chennai
+4 Wheeler = y
+
+You are not high end youngster age exp
+
+	Enter information
+
+Enter age:
+22
+Enter salary:
+100000
+Enter city:
+bangalore
+Do you own a 4 wheeler? (y/n)
+y
+	Applicants info
+
+Age = 22
+Salary = 100000
+city = bangalore
+4 Wheeler = y
+
+You are high end youngster
+

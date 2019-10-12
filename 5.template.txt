@@ -1,0 +1,282 @@
+#include<iostream>
+using namespace std;
+template<class T>
+class vectors
+{
+    T a[10];
+    int n;
+    public:
+    void get_val()
+    {
+        cout<<"Enter count of values = ";
+        cin>>n;
+        cout<<"Enter those values:\n";
+        for(int i=0;i<n;i++)
+        {
+            cin>>a[i];
+        }
+    }
+    void put_val()
+    {
+        cout<<"{";
+        for(int i=0;i<n-1;i++)
+        {
+            cout<<a[i]<<",";
+        }
+        cout<<a[n-1]<<"}"<<endl;
+    }
+    void mul_scalar()
+    {
+        int k;
+        cout<<"Enter the value of scalar to be multiplied to vector=";
+        cin>>k;
+        for(int i=0;i<n;i++)
+        {
+            a[i]=a[i]*k;
+        }
+        cout<<"{";
+        for(int i=0;i<n-1;i++)
+        {
+            cout<<a[i]<<",";
+        }
+        cout<<a[n-1]<<"}"<<endl;
+    }
+    void modify()
+    {
+        int c,m,flag=0;
+        T value,temp;
+        cout<<"Enter your choice:\n1.Replace by position\n2.Replace by value\n";
+        cin>>c;
+        switch(c)
+        {
+            case 1:{
+                cout<<"Enter the position of value to be replaced :";
+            cin>>m;
+            cout<<"Enter new value:";
+            cin>>value;
+            if(m<=n)
+            {
+                for(int i=0;i<n;i++)
+                {
+                    if(i==m-1)
+                    {
+                        a[i]=value;
+                        break;
+                    }
+                }
+
+
+            cout<<"{";
+        for(int i=0;i<n-1;i++)
+        {
+            cout<<a[i]<<",";
+        }
+        cout<<a[n-1]<<"}"<<endl;
+            }
+            else
+            {
+                cout<<"Position not found!!\n";
+
+            }
+            }
+            break;
+            case 2:{
+                cout<<"Enter value to be replaced:";
+            cin>>temp;
+            cout<<"Enter new value:";
+            cin>>value;
+            for(int i=0;i<n;i++)
+            {
+                if(a[i]==temp)
+               {
+                    flag=1;
+                    a[i]=value;
+                    break;
+               }
+            }
+            cout<<"{";
+        for(int i=0;i<n-1;i++)
+        {
+            cout<<a[i]<<",";
+        }
+        cout<<a[n-1]<<"}"<<endl;
+            if(flag==0)
+            cout<<"Value not found!!\n";
+            }
+            break;
+            default:cout<<"INVALID "<<endl;
+            break;
+        }
+    }
+
+    void choice()
+    {
+    	int ch;
+    	char c;
+    	get_val();
+    	cout<<"Vector is = ";
+    	put_val();
+    do{
+
+        cout<<"Enter your choice:\n1.Multiply given vector by scalar\n2.Modify given vector\n";
+        cin>>ch;
+        switch(ch)
+        {
+        case 1:mul_scalar();
+                break;
+        case 2:modify();
+        		break;
+        default:cout<<"INVALID CHOICE\n";
+
+        }
+        cout<<"Do you want to continue(y/n)??\n";
+        cin>>c;
+    }while(c=='y'||c=='Y');
+}
+
+};
+int main()
+{   int d;
+	char t;
+
+    do
+    {
+    cout<<"Choose datatype:1.Int2.Float\n";
+    cin>>d;
+    switch(d)
+    {
+    case 1:	vectors<int> t;
+    		t.choice();
+    		break;
+    case 2: vectors<float> t1;
+			t1.choice();
+    		break;
+    default: cout<<"Invalid!!\n";
+
+    }cout<<"Try another datatype??(y/n)\n";
+    cin>>t;
+    }while(t=='y'||t=='Y');
+    return 0;
+}
+
+
+
+
+
+OUTPUT:
+Choose datatype:1.Int2.Float
+1
+Enter count of values = 3
+Enter those values:
+10
+9
+7
+Vector is = {10,9,7}
+Enter your choice:
+1.Multiply given vector by scalar
+2.Modify given vector
+2
+Enter your choice:
+1.Replace by position
+2.Replace by value
+2
+Enter value to be replaced:9
+Enter new value:20
+{10,20,7}
+Do you want to continue(y/n)??
+y
+Enter your choice:
+1.Multiply given vector by scalar
+2.Modify given vector
+1
+Enter the value of scalar to be multiplied to vector:=2
+{20,40,14}
+Do you want to continue(y/n)??
+y
+Enter your choice:
+1.Multiply given vector by scalar
+2.Modify given vector
+2
+Enter your choice:
+1.Replace by position
+2.Replace by value
+1
+Enter the position of value to be replaced :3
+Enter new value:44
+{20,40,44}
+Do you want to continue(y/n)??
+y
+Enter your choice:
+1.Multiply given vector by scalar
+2.Modify given vector
+2
+Enter your choice:
+1.Replace by position
+2.Replace by value
+1
+Enter the position of value to be replaced :5
+Enter new value:543
+Position not found!!
+Do you want to continue(y/n)??
+y
+Enter your choice:
+1.Multiply given vector by scalar
+2.Modify given vector
+2
+Enter your choice:
+1.Replace by position
+2.Replace by value
+2
+Enter value to be replaced:33
+Enter new value:50
+{20,40,44}
+Value not found!!
+Do you want to continue(y/n)??
+n
+Try another datatype??(y/n)
+y
+Choose datatype:1.Int2.Float
+2
+Enter count of values = 3
+Enter those values:
+2.3
+1.5
+2.1
+Vector is = {2.3,1.5,2.1}
+Enter your choice:
+1.Multiply given vector by scalar
+2.Modify given vector
+1
+Enter the value of scalar to be multiplied to vector:=4
+{9.2,6,8.4}
+Do you want to continue(y/n)??
+y
+Enter your choice:
+1.Multiply given vector by scalar
+2.Modify given vector
+2
+Enter your choice:
+1.Replace by position
+2.Replace by value
+1
+Enter the position of value to be replaced :1
+Enter new value:3.09
+{3.09,6,8.4}
+Do you want to continue(y/n)??
+y
+Enter your choice:
+1.Multiply given vector by scalar
+2.Modify given vector
+2
+Enter your choice:
+1.Replace by position
+2.Replace by value
+2
+Enter value to be replaced:6
+Enter new value:5.9
+{3.09,5.9,8.4}
+Do you want to continue(y/n)??
+n
+Try another datatype??(y/n)
+n
+

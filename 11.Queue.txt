@@ -1,0 +1,231 @@
+#include<iostream>
+#include<list>
+using namespace std;
+void display(list<int> &l1)
+{
+    list<int>::iterator p;
+    for(p=l1.begin();p!=l1.end();p++)
+    {
+        cout<<*p<<" ";
+    }
+}
+int main()
+{
+    list<int> l1;
+    char ch;
+    int k;
+    do{
+        cout<<"-----------------OPERATIONS ON QUEUE------------------\n\n\n";
+        cout<<"MENU(Remember...Queue size is 5!!!)\n";
+        cout<<"1.Enqueue\t2.Dequeue\t3.Display Queue\n";
+        cout<<"Enter choice : ";
+        cin>>k;
+        switch(k)
+        {
+            case 1:
+                    if(l1.size()!=5)
+                    {
+                        cout<<"Enter element to be inserted in queue : ";
+                        cin>>k;
+                        l1.push_back(k);
+                        cout<<"Element inserted successfully!!!\n";
+                    }
+                    else
+                    cout<<"Queue is full\n";
+                    break;
+            case 2:
+                    if(l1.size()!=0)
+                    {
+                        k=l1.front();
+                        cout<<"Deleted element from queue is "<<k<<"\n";
+                        l1.pop_front();
+                    }
+                    else
+                    cout<<"Queue is empty\n";
+                    break;
+            case 3:
+                    if(l1.size()==0)
+                    cout<<"Queue is empty\n";
+                    else
+                    display(l1);
+                    break;
+            default:
+                    cout<<"\nInvalid choice!!\n";
+        }
+        cout<<"\nDo you want to try other queue operations? (y/n) : ";
+        cin>>ch;
+    }while(ch=='y'||ch=='Y');
+    return 0;
+}
+
+Output:
+
+-----------------OPERATIONS ON QUEUE------------------
+
+
+MENU(Remember...Queue size is 5!!!)
+1.Enqueue	2.Dequeue	3.Display Queue
+Enter choice : 1
+Enter element to be inserted in queue : 23
+Element inserted successfully!!!
+
+Do you want to try other queue operations? (y/n) : y
+-----------------OPERATIONS ON QUEUE------------------
+
+
+MENU(Remember...Queue size is 5!!!)
+1.Enqueue	2.Dequeue	3.Display Queue
+Enter choice : 3
+23 
+Do you want to try other queue operations? (y/n) : y
+-----------------OPERATIONS ON QUEUE------------------
+
+
+MENU(Remember...Queue size is 5!!!)
+1.Enqueue	2.Dequeue	3.Display Queue
+Enter choice : 1
+Enter element to be inserted in queue : 45
+Element inserted successfully!!!
+
+Do you want to try other queue operations? (y/n) : y
+-----------------OPERATIONS ON QUEUE------------------
+
+
+MENU(Remember...Queue size is 5!!!)
+1.Enqueue	2.Dequeue	3.Display Queue
+Enter choice : 3
+23 45 
+Do you want to try other queue operations? (y/n) : y
+-----------------OPERATIONS ON QUEUE------------------
+
+
+MENU(Remember...Queue size is 5!!!)
+1.Enqueue	2.Dequeue	3.Display Queue
+Enter choice : 1
+Enter element to be inserted in queue : 74
+Element inserted successfully!!!
+
+Do you want to try other queue operations? (y/n) : y
+-----------------OPERATIONS ON QUEUE------------------
+
+
+MENU(Remember...Queue size is 5!!!)
+1.Enqueue	2.Dequeue	3.Display Queue
+Enter choice : 3
+23 45 74 
+Do you want to try other queue operations? (y/n) : y
+-----------------OPERATIONS ON QUEUE------------------
+
+
+MENU(Remember...Queue size is 5!!!)
+1.Enqueue	2.Dequeue	3.Display Queue
+Enter choice : 1
+Enter element to be inserted in queue : 455
+Element inserted successfully!!!
+
+Do you want to try other queue operations? (y/n) : y
+-----------------OPERATIONS ON QUEUE------------------
+
+
+MENU(Remember...Queue size is 5!!!)
+1.Enqueue	2.Dequeue	3.Display Queue
+Enter choice : 3
+23 45 74 455 
+Do you want to try other queue operations? (y/n) : y
+-----------------OPERATIONS ON QUEUE------------------
+
+
+MENU(Remember...Queue size is 5!!!)
+1.Enqueue	2.Dequeue	3.Display Queue
+Enter choice : 1 
+Enter element to be inserted in queue : 1
+Element inserted successfully!!!
+
+Do you want to try other queue operations? (y/n) : y
+-----------------OPERATIONS ON QUEUE------------------
+
+
+MENU(Remember...Queue size is 5!!!)
+1.Enqueue	2.Dequeue	3.Display Queue
+Enter choice : 1
+Queue is full
+
+Do you want to try other queue operations? (y/n) : y
+-----------------OPERATIONS ON QUEUE------------------
+
+
+MENU(Remember...Queue size is 5!!!)
+1.Enqueue	2.Dequeue	3.Display Queue
+Enter choice : 3
+23 45 74 455 1 
+Do you want to try other queue operations? (y/n) : y
+-----------------OPERATIONS ON QUEUE------------------
+
+
+MENU(Remember...Queue size is 5!!!)
+1.Enqueue	2.Dequeue	3.Display Queue
+Enter choice : 2
+Deleted element from queue is 23
+
+Do you want to try other queue operations? (y/n) : y
+-----------------OPERATIONS ON QUEUE------------------
+
+
+MENU(Remember...Queue size is 5!!!)
+1.Enqueue	2.Dequeue	3.Display Queue
+Enter choice : 2
+Deleted element from queue is 45
+
+Do you want to try other queue operations? (y/n) : y
+-----------------OPERATIONS ON QUEUE------------------
+
+
+MENU(Remember...Queue size is 5!!!)
+1.Enqueue	2.Dequeue	3.Display Queue
+Enter choice : 2
+Deleted element from queue is 74
+
+Do you want to try other queue operations? (y/n) : y
+-----------------OPERATIONS ON QUEUE------------------
+
+
+MENU(Remember...Queue size is 5!!!)
+1.Enqueue	2.Dequeue	3.Display Queue
+Enter choice : 3
+455 1 
+Do you want to try other queue operations? (y/n) : y
+-----------------OPERATIONS ON QUEUE------------------
+
+
+MENU(Remember...Queue size is 5!!!)
+1.Enqueue	2.Dequeue	3.Display Queue
+Enter choice : 2
+Deleted element from queue is 455
+
+Do you want to try other queue operations? (y/n) : y
+-----------------OPERATIONS ON QUEUE------------------
+
+
+MENU(Remember...Queue size is 5!!!)
+1.Enqueue	2.Dequeue	3.Display Queue
+Enter choice : 3
+1 
+Do you want to try other queue operations? (y/n) : y
+-----------------OPERATIONS ON QUEUE------------------
+
+
+MENU(Remember...Queue size is 5!!!)
+1.Enqueue	2.Dequeue	3.Display Queue
+Enter choice : 2
+Deleted element from queue is 1
+
+Do you want to try other queue operations? (y/n) : y
+-----------------OPERATIONS ON QUEUE------------------
+
+
+MENU(Remember...Queue size is 5!!!)
+1.Enqueue	2.Dequeue	3.Display Queue
+Enter choice : 2
+Queue is empty
+
+

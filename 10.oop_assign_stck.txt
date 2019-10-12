@@ -1,0 +1,206 @@
+#include<iostream>
+#include<list>
+
+using namespace std;
+
+void display(list<int> &l)
+{
+	list<int>::iterator p;
+	cout<<endl;
+	cout<<"Elements in stack :";
+	for(p=l.begin();p!=l.end();++p)
+		cout<<*p<<" ";
+		cout<<"\n\n";
+}
+
+int main()
+{
+	list<int> l1;
+	char ch;
+	int k;
+	int s;
+	list<int>::iterator p;
+	cout<<"\n\nEnter the size of stack :";
+	cin>>s;
+	do
+	{
+		cout<<"Menu\n1.Push\n2.Pop\n3.Display"<<endl;
+		cin>>k;
+		switch(k)
+		{
+			case 1:
+				if(l1.size()!=s)
+				{
+					cout<<" Enter Element =";
+					cin>>k;
+					l1.push_back(k);
+					cout<<"Element pushed"<<endl;
+				}
+				else
+				{
+					cout<<"Overflow"<<endl;
+				}
+				break;
+			case 2:
+				if(l1.size()!=0)
+				{
+					k=l1.back();
+					cout<<k<<" is popped"<<endl;
+					l1.pop_back();
+				}
+				else
+				{
+					cout<<"Underflow"<<endl;
+				}
+				break;
+			case 3:
+				if(l1.size()==0)
+					cout<<" Empty stack";
+				else
+					display(l1);
+				break;
+			default:
+				cout<<"Invalid choice"<<endl;
+		}
+		cout<<"Enter y to continue =";
+		cin>>ch;
+	}while(ch=='y'||ch=='Y');
+	return 0;
+}
+
+
+Output:
+Enter the size of stack :5
+Menu
+1.Push
+2.Pop
+3.Display
+1
+ Enter Element =12
+Element pushed
+Enter y to continue =y
+Menu
+1.Push
+2.Pop
+3.Display
+1
+ Enter Element =63
+Element pushed
+Enter y to continue =y
+Menu
+1.Push
+2.Pop
+3.Display
+1
+ Enter Element =74
+Element pushed
+Enter y to continue =y
+Menu
+1.Push
+2.Pop
+3.Display
+1
+ Enter Element =54
+Element pushed
+Enter y to continue =y
+Menu
+1.Push
+2.Pop
+3.Display
+1
+ Enter Element =99
+Element pushed
+Enter y to continue =y
+Menu
+1.Push
+2.Pop
+3.Display
+1
+Overflow
+Enter y to continue =y
+Menu
+1.Push
+2.Pop
+3.Display
+3
+
+Elements in stack :12 63 74 54 99 
+
+Enter y to continue =y
+Menu
+1.Push
+2.Pop
+3.Display
+2
+99 is popped
+Enter y to continue =y
+Menu
+1.Push
+2.Pop
+3.Display
+3
+
+Elements in stack :12 63 74 54 
+
+Enter y to continue =y
+Menu
+1.Push
+2.Pop
+3.Display
+2
+54 is popped
+Enter y to continue =y
+Menu
+1.Push
+2.Pop
+3.Display
+3
+
+Elements in stack :12 63 74 
+
+Enter y to continue =y
+Menu
+1.Push
+2.Pop
+3.Display
+2
+74 is popped
+Enter y to continue =y
+Menu
+1.Push
+2.Pop
+3.Display
+3
+
+Elements in stack :12 63 
+
+Enter y to continue =y
+Menu
+1.Push
+2.Pop
+3.Display
+2
+63 is popped
+Enter y to continue =y
+Menu
+1.Push
+2.Pop
+3.Display
+3
+
+Elements in stack :12 
+
+Enter y to continue =y
+Menu
+1.Push
+2.Pop
+3.Display
+2
+12 is popped
+Enter y to continue =y
+Menu
+1.Push
+2.Pop
+3.Display
+3
+ Empty stack

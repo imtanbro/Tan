@@ -1,0 +1,311 @@
+#include<iostream>
+#include<string.h>
+#include<fstream>
+
+using namespace std;
+
+class call_dir
+{
+	private:
+		char name[30];
+		long long phone;
+	public:
+		call_dir()
+		{
+			strcpy(name,"NA");
+			phone=0;
+		}
+		
+		void accept()
+		{
+			cout<<"\n Enter Name : ";
+			cin>>name;
+			cout<<"\n Enter Phone No. : ";
+			cin>>phone;
+			cout<<"\n";
+		}
+		
+		void display()
+		{
+			cout<<" Name : "<<name<<"\n";
+			cout<<" Phone No : "<<phone<<"\n";
+		}
+		
+		long long r_phoneno()
+		{
+			return phone;
+		}
+};
+
+int main()
+{
+	call_dir c;
+	int s,n,flag=0;
+	long long num1,num2;
+	fstream f;
+	char q;
+	do{
+	cout<<"\tPhone Directory Menu\n1.Create\n2.Display\n3.Add\n4.Search\n5.Update\n6.Delete\nEnter choice :";
+	cin>>s;
+	switch(s)
+	{
+		case 1:
+			f.open("Phone Directory.txt",ios::out);
+			cout<<"\n Enter no. of contact : ";
+			cin>>n;
+			for(int i=0;i<n;i++)
+			{
+				c.accept();
+				f.write((char*)&c,sizeof(call_dir));
+			}
+			f.close();
+			break;
+		case 2:
+			f.open("Phone Directory.txt",ios::in);
+			f.seekg(0,ios::beg);
+			for(int i=0;i<n;i++)
+			{
+				f.read((char*)&c,sizeof(call_dir));
+				c.display();
+			}
+			f.close();
+			break;
+		case 3:
+			f.open("Phone Directory.txt",ios::app|ios::out);
+			cout<<" Enter new record"<<endl;
+			f.seekp(0,ios::end);
+			c.accept();
+			f.write((char*)&c,sizeof(call_dir));
+			n++;
+			f.close();
+			break;
+		
+		
+		case 4:
+			f.open("Phone Directory.txt",ios::out|ios::in);
+			f.seekg(0,ios::beg);
+			cout<<"\nEnter phone no. to search : ";
+			cin>>num1;
+			for(int i=0;i<n;i++)
+			{
+				f.read((char*)&c,sizeof(call_dir));
+				if(c.r_phoneno()==num1)
+				{
+					c.display();
+					flag=1;
+				}
+			}
+			if(flag=0)
+				cout<<"\nNo Record Found";
+			f.close();
+			break;	
+		
+		case 5:
+			f.open("Phone Directory.txt",ios::out|ios::in);
+			f.seekg(0,ios::beg);
+			cout<<"\n Enter phone no. to search and modified = ";
+			cin>>num1;
+			for(int i=0;i<n;i++)
+			{		
+				f.read((char*)&c,sizeof(call_dir));
+				if(c.r_phoneno()==num1)
+				{
+					c.accept();
+					f.seekp(sizeof(call_dir)*i,ios::beg);
+					f.write((char*)&c,sizeof(call_dir));
+					flag=1;
+				}
+			}
+			if(flag==0)
+			{
+				cout<<"\n Record not found";
+			}
+			f.close();
+			break;
+		case 6:
+		        cout<<"Enter record details to be deleted(telephone no.) : ";
+		        cin>>num2;
+		        f.open("Phone Directory.txt",ios::in);
+		        fstream f1;
+		        f1.open("Temp.txt",ios::out);
+			for(int i=0;i<n;i++)
+			{
+			        f.read((char*)&c,sizeof(call_dir));
+				if(c.r_phoneno()==num2)
+				{
+					f1.write((char*)&c,sizeof(call_dir));
+		                	n--;
+				}
+			} 
+		        f.close();
+			f1.close();
+			remove("Phone Directory.txt");
+			rename("Temp.txt","Phone Directory.txt");
+		        break;
+		        
+		
+			
+		
+	}
+	cout<<"Do you want to continue?"<<endl;
+	cin>>q;
+	}while(q=='y'||q=='Y');
+	return 0;
+}
+
+Output:
+
+	Phone Directory Menu
+1.Create
+2.Display
+3.Add
+4.Search
+5.Update
+6.Delete
+Enter choice :1
+
+ Enter no. of contact : 3
+
+ Enter Name : Lucifer
+
+ Enter Phone No. : 9497949749 
+
+
+ Enter Name : Veronica
+
+ Enter Phone No. : 7744774477
+
+
+ Enter Name : Archie
+
+ Enter Phone No. : 8888777787
+
+Do you want to continue?
+y
+	Phone Directory Menu
+1.Create
+2.Display
+3.Add
+4.Search
+5.Update
+6.Delete
+Enter choice :2
+ Name : Lucifer
+ Phone No : 9497949749
+ Name : Veronica
+ Phone No : 7744774477
+ Name : Archie
+ Phone No : 8888777787
+Do you want to continue?
+y
+	Phone Directory Menu
+1.Create
+2.Display
+3.Add
+4.Search
+5.Update
+6.Delete
+Enter choice :3
+ Enter new record
+
+ Enter Name : jughead
+
+ Enter Phone No. : 8588555885
+
+Do you want to continue?
+y
+	Phone Directory Menu
+1.Create
+2.Display
+3.Add
+4.Search
+5.Update
+6.Delete
+Enter choice :2
+ Name : Lucifer
+ Phone No : 9497949749
+ Name : Veronica
+ Phone No : 7744774477
+ Name : Archie
+ Phone No : 8888777787
+ Name : jughead
+ Phone No : 8588555885
+Do you want to continue?
+y
+	Phone Directory Menu
+1.Create
+2.Display
+3.Add
+4.Search
+5.Update
+6.Delete
+Enter choice :4
+
+Enter phone no. to search : 7744774477
+ Name : Veronica
+ Phone No : 7744774477
+Do you want to continue?
+y   
+	Phone Directory Menu
+1.Create
+2.Display
+3.Add
+4.Search
+5.Update
+6.Delete
+Enter choice :5
+
+ Enter phone no. to search and modified = 8888777787
+
+ Enter Name : Betty
+
+ Enter Phone No. : 9494949494
+
+Do you want to continue?
+y
+	Phone Directory Menu
+1.Create
+2.Display
+3.Add
+4.Search
+5.Update
+6.Delete
+Enter choice :2
+ Name : Lucifer
+ Phone No : 9497949749
+ Name : Veronica
+ Phone No : 7744774477
+ Name : Betty
+ Phone No : 9494949494
+ Name : jughead
+ Phone No : 8588555885
+Do you want to continue?
+y
+	Phone Directory Menu
+1.Create
+2.Display
+3.Add
+4.Search
+5.Update
+6.Delete
+Enter choice :6
+Enter record details to be deleted(telephone no.) : 8588555885
+Do you want to continue?
+y
+	Phone Directory Menu
+1.Create
+2.Display
+3.Add
+4.Search
+5.Update
+6.Delete
+Enter choice :2
+ Name : jughead
+ Phone No : 8588555885
+ Name : jughead
+ Phone No : 8588555885
+ Name : jughead
+ Phone No : 8588555885
+Do you want to continue?
+n
+

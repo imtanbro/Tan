@@ -1,0 +1,99 @@
+#include<iostream>
+using namespace std;
+class calculator
+{
+    private:float a,b,add,sub,mul,divi;
+    char ch,c;
+    public:
+    
+    void get_val()
+    {
+        cout<<"Enter value of num1 : ";
+        cin>>a;
+        cout<<"Enter value of num2 : ";
+        cin>>b;
+    }
+        
+    void calculate()
+    {
+        get_val();
+        do
+        {
+            
+        
+        cout<<"Enter choice:\n";
+        cout<<"+:ADD\n-:SUBTRACT\n*:MULTIPLICATION\n/:DIVISION\n";
+        cin>>ch;
+        switch(ch)
+        {
+            case'+':add=a+b;
+            cout<<"ADDITION IS : "<<add<<endl;
+            break;
+            case'-':sub=a-b;
+            cout<<"SUBTRACTTION IS : "<<sub<<endl;
+            break;
+            case'*':mul=a*b;
+            cout<<"MULTIPLICATION IS : "<<mul<<endl;
+            break;
+            case'/':divi=a/b;
+            cout<<"DIVISION IS : "<<divi<<endl;
+            break;
+            default:
+            cout<<"Invalid choice"<<endl;
+        }
+        cout<<"continue?(y/n)"<<endl;
+        cin>>c;
+    }while(c=='y'||c=='Y');
+    }
+    
+};
+
+int main()
+{
+    calculator n;
+    n.calculate();
+    return 0;
+    
+}
+
+OUTPUT:
+
+Enter value of num1 : 6
+Enter value of num2 : 2
+Enter choice:
++:ADD
+-:SUBTRACT
+*:MULTIPLICATION
+/:DIVISION
+/
+DIVISION IS : 3
+continue?(y/n)
+y
+Enter choice:
++:ADD
+-:SUBTRACT
+*:MULTIPLICATION
+/:DIVISION
+*
+MULTIPLICATION IS : 12
+continue?(y/n)
+y
+Enter choice:
++:ADD
+-:SUBTRACT
+*:MULTIPLICATION
+/:DIVISION
+-
+SUBTRACTTION IS : 4
+continue?(y/n)
+y
+Enter choice:
++:ADD
+-:SUBTRACT
+*:MULTIPLICATION
+/:DIVISION
++
+ADDITION IS : 8
+continue?(y/n)
+n
+
